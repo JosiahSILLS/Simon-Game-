@@ -1,0 +1,126 @@
+import board
+import time
+import digitalio as dio
+import random
+
+led1 = dio.DigitalInOut(board.D8)
+led1.direction = dio.Direction.OUTPUT
+
+btn_1 = dio.DigitalInOut(board.D2)
+btn_on.direction = dio.Direction.INPUT
+
+led2 = dio.DigitalInOut(board.D9)
+led2.direction = dio.Direction.OUTPUT
+
+btn_2 = dio.DigitalInOut(board.D3)
+btn_on.direction = dio.Dirction.INPUT
+
+led3 = dio.DigitalInOut(board.D10)
+led3.direction = dio.Direction.OUTPUT
+
+btn_3 = dio.DigitalInOut(board.D4)
+btn_on.direction = dio.Direction.INPUT
+
+led4 = dio.DigitalInOut(board.D11)
+led4.direction = dio.Direction.OUTPUT
+
+btn_4 = dio.DigitalInOut(board.D5)
+btn_on.direction = dio.Direction.INPUT
+
+btn_start = dio.DigitalInOut(board.D12)
+btn_on.direction = dio.Direction.INPUT
+
+colors = (1, 2, 3, 4)
+random = [random.choice(colors)]
+speed = 0.5
+
+def light_sequence():
+    for x in list1:
+        if x == 1:
+            led1.value = True
+            time.sleep(1)
+            color_list.value = False
+            print('red')
+        if x == 2:
+            led2.value = True
+            time.sleep(1)
+            color_list.value = False
+            print('green')
+        if x == 3:
+            led3.value = True
+            time.sleep(1)
+            color_list.value = False
+            print('white')
+        if x == 4:
+            led4.value = True
+            time.sleep(1)
+            color_list.value = False
+            print('yellow')
+        if btn_start.value == True:
+            off = True
+            game = False
+            time.sleep(0.5)
+            
+def point_system(points):
+    list1.append(random.choice(colors))
+    points += 1
+    return points
+
+def check(speed):
+    for i in list1:
+        color = None
+        while color == None:
+            if btn_1.value == True:
+                led1.value = True
+                time.sleep(0.5)
+                led1.value = False
+                color = 1
+            if btn_2.value == True:
+                led2.value = True
+                time.sleep(0.5)
+                led2.value = False
+                color = 2
+            if btn_3.value == True:
+                led3.value = True
+                time.sleep(0.5)
+                led3.value = False
+                color = 3
+            if btn_4.value == True:
+                led4.value = True
+                time.sleep(0.5)
+                led4.value = False
+                color = 4
+            if btn_start.value == True:
+                off = True
+                return False
+        time.sleep(speed)
+        if color != i:
+            return False
+    return True
+
+if btn_start.value:
+    game = True
+    for i in range(5):
+        led1.value = True
+        led2.value = True
+        led3.value = True
+        led4.value = True
+        time.sleep(speed)
+        led1.value = True
+        led2.value = True
+        led3.value = True
+        led4.value = True
+        time.sleep(speed)
+    while game:
+        sequence(speed)
+        if off == True or btn_start.value == True:
+            game = False
+        else:
+            game = check(checK_speed)
+        if game:
+            points = point_system(points)
+            
+        
+            
+
+
